@@ -72,3 +72,10 @@ with col2:
           diab_diagnosis = 'The person is not diabetic'
         
     st.success(diab_diagnosis)
+    hide_streamlit_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
