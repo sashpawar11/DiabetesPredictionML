@@ -1,6 +1,7 @@
 import pickle
+import time
 import streamlit as st
-
+from streamlit_option_menu import option_menu
 
 
 # loading the saved models
@@ -11,25 +12,48 @@ import streamlit as st
 
 # parkinsons_model = pickle.load(open('C:/Users/siddhardhan/Desktop/Multiple Disease Prediction System/saved models/parkinsons_model.sav', 'rb'))
 
+#Page Title
+st.set_page_config(
+   page_title="Diabetes Prediction",
+   page_icon="🧊",
+   layout="wide",
+   initial_sidebar_state="expanded",
+   
+)
+
+#  with st.spinner("Loading..."):
+#         time.sleep(5)
+#     st.success("Done!")
 
 
 # sidebar for navigation
-# with st.sidebar:
-    
-#     selected = option_menu('Multiple Disease Prediction System',
+with st.sidebar:
+   
+    selected = option_menu('Select Type Of Algorithm:',
                           
-#                           ['Diabetes Prediction',
-#                            'Heart Disease Prediction',
-#                            'Parkinsons Prediction'],
-#                           icons=['activity','heart','person'],
-#                           default_index=0)
-    
+                          ['Decision Tree',
+                           'SVM',
+                           'Naive Bayes'],
+                          icons=['activity','heart','person'],
+                          default_index=0)
+   
+
 # Diabetes Prediction Page
 
     
     # page title
 st.title('Diabetes Prediction using ML')
-    
+col1, col2, col3 = st.columns([4,8,4])
+
+with col1:
+    st.write("")
+
+with col2:
+    st.image("https://miro.medium.com/max/1400/1*INSggrGiQ1lCgU8YTsfEVw.png")
+
+with col3:
+    st.write("")
+
     # getting the input data from the user
 col1, col2, col3 = st.columns(3)
     
@@ -72,10 +96,10 @@ with col2:
           diab_diagnosis = 'The person is not diabetic'
         
     st.success(diab_diagnosis)
-    hide_streamlit_style = """
-            <style>
-            #MainMenu {visibility: hidden;}
-            footer {visibility: hidden;}
-            </style>
-            """
-st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
+#     hide_streamlit_style = """
+#             <style>
+#             #MainMenu {visibility: hidden;}
+#             footer {visibility: hidden;}
+#             </style>
+#             """
+# st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
