@@ -6,7 +6,12 @@ from streamlit_option_menu import option_menu
 
 # loading the saved models
 
-# diabetes_model = pickle.load(open('C:/Users/siddhardhan/Desktop/Multiple Disease Prediction System/saved models/diabetes_model.sav', 'rb'))
+svm_model = pickle.load(open('D:\coding\DiabetesPredictionML\svm_model.sav', 'rb'))
+# knn_model = pickle.load(open('D:\coding\DiabetesPredictionML\knn_model.sav', 'rb'))
+dtt_model = pickle.load(open('D:\coding\DiabetesPredictionML\dtt_model.sav', 'rb'))
+# rf_model = pickle.load(open('D:\coding\DiabetesPredictionML\rf_model.sav', 'rb'))
+# naive_bayes_model = pickle.load(open('D:\coding\DiabetesPredictionML\naive_bayes_model.sav', 'rb'))
+# lr_model = pickle.load(open('D:\coding\DiabetesPredictionML\lr_model.sav', 'rb'))
 
 # heart_disease_model = pickle.load(open('C:/Users/siddhardhan/Desktop/Multiple Disease Prediction System/saved models/heart_disease_model.sav','rb'))
 
@@ -33,7 +38,9 @@ with st.sidebar:
                           
                           ['Decision Tree',
                            'SVM',
-                           'Naive Bayes'],
+                           'Naive Bayes',
+                            'SVM',
+                           'SVM',],
                           icons=['activity','heart','person'],
                           default_index=0)
    
@@ -82,20 +89,38 @@ with col2:
     Age = st.text_input('Age of the Person')
     
     
-    # code for Prediction
-    diab_diagnosis = ''
+    # # code for Prediction
+    # diab_diagnosis = ''
     
     # creating a button for Prediction
     
     if st.button('Diabetes Test Result'):
-        diab_prediction = diabetes_model.predict([[Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age]])
+        if(selected == "Decision Tree"):
+            
+            dtt_prediction = dtt_model.predict([[Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age]])
         
-        if (diab_prediction[0] == 1):
-          diab_diagnosis = 'The person is diabetic'
-        else:
-          diab_diagnosis = 'The person is not diabetic'
+            if (dtt_prediction[0] == 1):
+                #  diab_diagnosis = 'The person is diabetic'
+                 st.success('The person is diabetic')
+            else:
+                # diab_diagnosis = 'The person is not diabetic'
+                st.error('The person is not diabetic')
+
+        if(selected == "SVM"):
+            
+            svm_prediction = svm_model.predict([[Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age]])
         
-    st.success(diab_diagnosis)
+            if (svm_prediction[0] == 1):
+                #  diab_diagnosis = 'The person is diabetic'
+                 st.success('The person is diabetic')
+            else:
+                # diab_diagnosis = 'The person is not diabetic'
+                st.error('The person is not diabetic')
+        
+
+
+
+    
 #     hide_streamlit_style = """
 #             <style>
 #             #MainMenu {visibility: hidden;}
