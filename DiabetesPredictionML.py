@@ -6,9 +6,9 @@ from streamlit_option_menu import option_menu
 
 # loading the saved models
 
-svm_model = pickle.load(open('D:\coding\DiabetesPredictionML\svm_model.sav', 'rb'))
+svm_model = pickle.load(open('svm_model.sav', 'rb'))
 # knn_model = pickle.load(open('D:\coding\DiabetesPredictionML\knn_model.sav', 'rb'))
-dtt_model = pickle.load(open('D:\coding\DiabetesPredictionML\dtt_model.sav', 'rb'))
+dtt_model = pickle.load(open('dtt_model.sav', 'rb'))
 # rf_model = pickle.load(open('D:\coding\DiabetesPredictionML\rf_model.sav', 'rb'))
 # naive_bayes_model = pickle.load(open('D:\coding\DiabetesPredictionML\naive_bayes_model.sav', 'rb'))
 # lr_model = pickle.load(open('D:\coding\DiabetesPredictionML\lr_model.sav', 'rb'))
