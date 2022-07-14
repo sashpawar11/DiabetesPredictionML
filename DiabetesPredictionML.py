@@ -36,12 +36,14 @@ with st.sidebar:
    
     selected = option_menu('Select Type Of Algorithm:',
                           
+                           
                           ['Decision Tree',
                            'SVM',
                            'Naive Bayes',
-                            'SVM',
-                           'SVM',],
-                          icons=['activity','heart','person'],
+                            'Logistic Regression',
+                           'KNN',
+                           'Random Forest'],
+                          icons=['activity','activity','activity','activity','activity','activity'],
                           default_index=0)
    
 
